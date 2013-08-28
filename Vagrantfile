@@ -24,8 +24,6 @@ Vagrant::Config.run do |config|
     # Add X.org Ubuntu backported 3.8 kernel
     pkg_cmd << "add-apt-repository -y ppa:ubuntu-x-swat/r-lts-backport; " \
       "apt-get update -qq; apt-get install -q -y linux-image-3.8.0-19-generic; "
-    # add startup script
-    pkg_cmd << "echo 'if [ -f /vagrant/startup.sh ]; then bash /vagrant/startup.sh; fi;' >> /etc/rc.local; "
     # Add guest additions if local vbox VM
     is_vbox = true
     ARGV.each do |arg| is_vbox &&= !arg.downcase.start_with?("--provider") end
@@ -45,9 +43,9 @@ Vagrant::Config.run do |config|
     # Activate new kernel
     pkg_cmd << "shutdown -r +1; "
     config.vm.provision :shell, :inline => pkg_cmd
+    config.vm.provision :shell, :path => 'lib/startup.sh'
   end
 end
-
 
 # Providers were added on Vagrant >= 1.1.0
 Vagrant::VERSION >= "1.1.0" and Vagrant.configure("2") do |config|
