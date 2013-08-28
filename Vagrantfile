@@ -43,7 +43,7 @@ Vagrant::Config.run do |config|
     # Activate new kernel
     pkg_cmd << "shutdown -r +1; "
     config.vm.provision :shell, :inline => pkg_cmd
-    config.vm.provision :shell, :path => 'lib/startup.sh'
+    config.vm.provision :shell, :path => 'docker.sh'
   end
 end
 
