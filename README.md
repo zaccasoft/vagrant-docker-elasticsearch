@@ -7,9 +7,13 @@ environment configured via Docker.
 
 * Install [VirtualBox](https://www.virtualbox.org/)
 * Install [Vagrant](http://www.vagrantup.com/)
-* `git clone git@github.com:TroyGoode/vagrant-docker-elasticsearch.git`
-* `cd vagrant-docker-elasticsearch`
-* `vagrant up`
+* Execute the following in your terminal:
+
+```bash
+$ git clone git@github.com:TroyGoode/vagrant-docker-elasticsearch.git
+$ cd vagrant-docker-elasticsearch
+$ vagrant up
+```
 
 ## License
 
